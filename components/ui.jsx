@@ -206,15 +206,101 @@ export function StatCard({ label, value, sub, accent = false, icon: Icon, delay 
 }
 
 /* Interactive animated bar chart component */
-export function AnimatedBarChart({ data, height = 160, barColor = "var(--green-400)", activeColor = "var(--green-600)", showLabels = true }) {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+/* Smooth animated area/wave chart component */
+export function AnimatedAreaChart({ data, height = 160, color = "var(--green-500)", showLabels = true }) {
   const [mounted, setMounted] = useState(false);
-  const max = Math.max(...data.map(d => d.value));
+  const max = Math.max(1, ...data.map(d => d.value));
 
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  const points = data.map((item, i) => {
+    const x = (i / (data.length - 1)) * 100;
+    const y = 100 - (item.value / max) * 100;
+    return `${x},${y}`;
+  });
+
+  const pathData = points.join(" ");
+  const areaData = `0,100 ${pathData} 100,100`;
+
+  return (
+    <div style={{ position: "relative", width: "100%", height }}>
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ width: "100%", height: "100%", display: "block", overflow: "visible" }}
+      >
+        <defs>
+          <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity="0.4" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        <path
+          d={`M ${areaData}`}
+          fill="url(#areaGradient)"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transition: "opacity 0.8s ease",
+          }}
+        />
+
+        <path
+          d={`M ${pathData}`}
+          fill="none"
+          stroke={color}
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            strokeDasharray: 400,
+            strokeDashoffset: mounted ? 0 : 400,
+            transition: "stroke-dashoffset 1.5s var(--transition-smooth)",
+          }}
+        />
+
+        {/* Data points */}
+        {data.map((item, i) => {
+          const x = (i / (data.length - 1)) * 100;
+          const y = 100 - (item.value / max) * 100;
+          return (
+            <circle
+              key={i}
+              cx={x}
+              cy={y}
+              r="2.5"
+              fill="white"
+              stroke={color}
+              strokeWidth="2"
+              style={{
+                opacity: mounted ? 1 : 0,
+                transform: `scale(${mounted ? 1 : 0})`,
+                transition: `all 0.3s ease ${0.5 + i * 0.1}s`,
+                transformOrigin: `${x}% ${y}%`,
+              }}
+            />
+          );
+        })}
+      </svg>
+      {showLabels && (
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12 }}>
+          {data.map((item, i) => (
+            <span key={i} style={{ fontSize: 10, color: "var(--gray-400)", fontWeight: 600 }}>
+              {item.label}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function AnimatedBarChart({ data, height = 160, barColor = "var(--green-400)", activeColor = "var(--green-600)", showLabels = true }) {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const max = Math.max(1, ...data.map(d => d.value));
 
   return (
     <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height, position: "relative" }}>
@@ -262,7 +348,7 @@ export function AnimatedBarChart({ data, height = 160, barColor = "var(--green-4
             )}
             <div style={{
               width: "100%",
-              height: mounted ? `${pct}%` : "0%",
+              height: `${pct}%`,
               background: isHovered 
                 ? `linear-gradient(180deg, ${activeColor}, ${activeColor}cc)` 
                 : isMax 

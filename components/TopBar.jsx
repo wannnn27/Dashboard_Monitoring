@@ -28,8 +28,8 @@ function NotificationPanel({ isOpen, onToggle }) {
           background: "linear-gradient(180deg, var(--gray-50) 0%, white 100%)"
         }}>
           <div>
-            <h3 style={{ fontSize: 16, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.01em" }}>Notifications</h3>
-            <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>{NOTIFICATIONS.length} unread</p>
+            <h3 style={{ fontSize: 16, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.01em" }}>Notifikasi</h3>
+            <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>{NOTIFICATIONS.length} belum dibaca</p>
           </div>
           <button 
             onClick={onToggle} 
@@ -100,7 +100,7 @@ function NotificationPanel({ isOpen, onToggle }) {
           }}
           onMouseEnter={e => e.currentTarget.style.color = "var(--green-700)"}
           onMouseLeave={e => e.currentTarget.style.color = "var(--green-600)"}
-          >View All Notifications →</button>
+          >Lihat Semua Notifikasi →</button>
         </div>
       </div>
     </>
@@ -148,8 +148,8 @@ export default function TopBar() {
            <Sprout size={22} strokeWidth={2.5} />
          </div>
          <div>
-           <h1 style={{ fontSize: 18, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.03em", lineHeight: 1.2 }}>Greenhouse Monitor</h1>
-           <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>Smart Agriculture Dashboard</p>
+           <h1 style={{ fontSize: 18, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.03em", lineHeight: 1.2 }}>Monitor Rumah Kaca</h1>
+           <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>Dasbor Pertanian Cerdas</p>
          </div>
       </div>
 
@@ -163,7 +163,7 @@ export default function TopBar() {
             transition: "all 0.3s" 
           }} />
           <input
-            placeholder="Search analytics..."
+            placeholder="Cari analitik..."
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
             style={{
@@ -229,7 +229,7 @@ export default function TopBar() {
           }}
         >
           <Bell size={17} color={isNotifOpen ? "var(--green-600)" : "var(--gray-500)"} />
-          <span style={{ fontSize: 13, fontWeight: 700, color: isNotifOpen ? "var(--green-700)" : "var(--gray-700)" }}>Alerts</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: isNotifOpen ? "var(--green-700)" : "var(--gray-700)" }}>Peringatan</span>
           <div style={{
             position: "absolute", top: 2, right: 2, width: 16, height: 16,
             background: "#ef4444", borderRadius: "50%", border: "2px solid white",

@@ -28,8 +28,8 @@ export default function OverviewPage() {
   }, []);
 
   const timeBlocks = [
-    { label: "Watering", start: 35, width: 20, color: "var(--green-500)", icon: LucideIcons.Droplets },
-    { label: "Fertilize", start: 60, width: 15, color: "#f59e0b", icon: LucideIcons.Sparkles },
+    { label: "Penyiraman", start: 35, width: 20, color: "var(--green-500)", icon: LucideIcons.Droplets },
+    { label: "Pemupukan", start: 60, width: 15, color: "#f59e0b", icon: LucideIcons.Sparkles },
   ];
 
   return (
@@ -38,17 +38,17 @@ export default function OverviewPage() {
       {/* ── TOP HDR ── */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
         <div>
-          <h2 style={{ fontSize: 28, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.03em" }}>Overview</h2>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.03em" }}>Ikhtisar</h2>
           <p style={{ fontSize: 13, color: "var(--gray-400)", fontWeight: 500, marginTop: 4 }}>
-            Monitor greenhouse conditions, alerts, and daily activities.
+            Pantau kondisi rumah kaca, peringatan, dan aktivitas harian.
           </p>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
           <Button variant="outline" style={{ borderRadius: 14, height: 44, padding: "0 18px", gap: 8, fontSize: 13, fontWeight: 700 }}>
-            <CalendarDays size={16} /> This Week
+            <CalendarDays size={16} /> Minggu Ini
           </Button>
           <Button variant="dark" style={{ borderRadius: 14, height: 44, padding: "0 22px", gap: 8, fontSize: 13, fontWeight: 700 }}>
-            <ExternalLink size={16} /> Export
+            <ExternalLink size={16} /> Ekspor
           </Button>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function OverviewPage() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative", zIndex: 10 }}>
               <div style={{ animation: mounted ? "slideUpFade 0.5s ease both" : "none" }}>
                 <p style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-400)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
-                  <CalendarDays size={14} /> Mon, 22 Jul
+                  <CalendarDays size={14} /> Sen, 22 Jul
                 </p>
                 <div style={{ display: "flex", alignItems: "flex-end", gap: 16 }}>
                   <h1 style={{ fontSize: 64, fontWeight: 800, color: "var(--gray-900)", lineHeight: 1, letterSpacing: "-0.04em" }}>
@@ -96,7 +96,7 @@ export default function OverviewPage() {
                       }}>
                         <Sun size={18} color="#f59e0b" fill="#f59e0b" />
                       </div>
-                      <span style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-800)" }}>Sunny</span>
+                      <span style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-800)" }}>Cerah</span>
                       <div style={{
                         display: "flex", alignItems: "center", gap: 4,
                         background: "var(--green-50)",
@@ -107,7 +107,7 @@ export default function OverviewPage() {
                         <span style={{ fontSize: 11, fontWeight: 700, color: "var(--green-600)" }}>+2°</span>
                       </div>
                     </div>
-                    <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 600 }}>H 26°C · L 18°C</p>
+                    <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 600 }}>T 26°C · R 18°C</p>
                   </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function OverviewPage() {
                 border: "1px solid var(--gray-100)",
                 animation: mounted ? "slideUpFade 0.5s ease 0.1s both" : "none",
               }}>
-                <MapPin size={14} color="var(--green-500)" /> Hanover, Germany
+                <MapPin size={14} color="var(--green-500)" /> Bogor, Indonesia
               </div>
             </div>
 
@@ -135,7 +135,7 @@ export default function OverviewPage() {
             }}>
               <img 
                 src={HERO_IMAGE} 
-                alt="Greenhouse Map" 
+                alt="Peta Rumah Kaca" 
                 className="float-animation"
                 style={{ 
                   maxWidth: "100%", 
@@ -167,7 +167,7 @@ export default function OverviewPage() {
               transition: "all 0.5s ease",
             }}>
               <div style={{ transform: "rotateZ(15deg) rotateX(-45deg)", textAlign: "center" }}>
-                <p style={{ color: "var(--green-700)", fontSize: 11, fontWeight: 900, letterSpacing: "0.05em" }}>SECTION 01</p>
+                <p style={{ color: "var(--green-700)", fontSize: 11, fontWeight: 900, letterSpacing: "0.05em" }}>BAGIAN 01</p>
                 <div className="ring-pulse" style={{ 
                   width: 10, height: 10, borderRadius: "50%", 
                   background: "var(--green-500)", margin: "8px auto",
@@ -182,8 +182,8 @@ export default function OverviewPage() {
               animation: mounted ? "slideUpFade 0.5s ease 0.3s both" : "none",
             }}>
               {[
-                { icon: Droplets, label: "Humidity", value: "65%" },
-                { icon: LucideIcons.Wind, label: "Wind", value: "12 km/h" },
+                { icon: Droplets, label: "Kelembapan", value: "65%" },
+                { icon: LucideIcons.Wind, label: "Angin", value: "12 km/jam" },
               ].map((item) => (
                 <div key={item.label} style={{
                   display: "flex", alignItems: "center", gap: 8,
@@ -276,16 +276,16 @@ export default function OverviewPage() {
             opacity: 0,
           }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-              <h3 style={{ fontSize: 20, fontWeight: 800 }}>Critical Alert</h3>
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>Peringatan Kritis</h3>
               <div style={{
                 background: "rgba(255,255,255,0.15)",
                 padding: "4px 10px",
                 borderRadius: 99,
                 fontSize: 11,
                 fontWeight: 700,
-              }}>{ALERTS.filter(a => !a.ok).length} Issue</div>
+              }}>{ALERTS.filter(a => !a.ok).length} Masalah</div>
             </div>
-            <p style={{ fontSize: 12, opacity: 0.7, fontWeight: 500, marginBottom: 28 }}>Real-time greenhouse health monitoring</p>
+            <p style={{ fontSize: 12, opacity: 0.7, fontWeight: 500, marginBottom: 28 }}>Pemantauan kesehatan rumah kaca waktu nyata</p>
             
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               {ALERTS.map((a, i) => (
@@ -337,14 +337,14 @@ export default function OverviewPage() {
           {/* Activity Overview Card */}
           <Card style={{ padding: 28, borderRadius: 28, flex: 1, boxShadow: "var(--shadow-sm)", animation: "staggerUp 0.5s ease 200ms both", opacity: 0, }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-              <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--gray-900)" }}>Activity Overview</h3>
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--gray-900)" }}>Ikhtisar Aktivitas</h3>
               <LayoutGrid size={20} color="var(--gray-300)" />
             </div>
-            <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 500, marginBottom: 24 }}>Daily greenhouse activity schedule</p>
+            <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 500, marginBottom: 24 }}>Jadwal aktivitas harian rumah kaca</p>
 
             {/* Days Picker */}
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 28, background: "var(--gray-50)", padding: 5, borderRadius: 14, border: "1px solid var(--gray-100)" }}>
-              {["MON", "TUE", "WED", "THU", "FRI", "SAT"].map(d => (
+              {["SEN", "SEL", "RAB", "KAM", "JUM", "SAB"].map(d => (
                 <button
                   key={d}
                   onClick={() => setActiveDay(d)}
@@ -417,8 +417,8 @@ export default function OverviewPage() {
                     <block.icon size={16} />
                   </div>
                   <div>
-                    <p style={{ fontSize: 10, fontWeight: 800, color: "var(--gray-500)", letterSpacing: "0.03em" }}>{block.label}</p>
-                    <p style={{ fontSize: 9, color: "var(--gray-400)", fontWeight: 600 }}>Scheduled</p>
+                    <p style={{ fontSize: 10, fontWeight: 800, color: "var(--gray-500)", letterSpacing: "0.03em" }}>{block.label === "Watering" ? "Penyiraman" : block.label === "Fertilize" ? "Pemupukan" : block.label}</p>
+                    <p style={{ fontSize: 9, color: "var(--gray-400)", fontWeight: 600 }}>Dijadwalkan</p>
                   </div>
                 </div>
               ))}
@@ -462,7 +462,7 @@ export default function OverviewPage() {
                   <Button variant="outline" size="sm" style={{ 
                     padding: "8px 16px", background: "white", borderRadius: 12, 
                     border: "1.5px solid var(--gray-200)", fontSize: 12, fontWeight: 800, color: "var(--gray-800)" 
-                  }}>Schedule</Button>
+                  }}>Jadwalkan</Button>
                 </div>
               ))}
             </div>

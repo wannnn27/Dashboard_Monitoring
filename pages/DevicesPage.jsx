@@ -20,10 +20,10 @@ import {
 } from "lucide-react";
 
 const DEVICE_DETAIL = {
-  "Soil Sensor 01":            { connectivity: "Class A",   power: "Battery Backup",  radio: "Good @SSI -85 dBm / SNR 6.5 dB", type: "Libelium Plug & Sensor" },
-  "Weather Sensor 01":         { connectivity: "Class B",   power: "Solar Powered",   radio: "Excellent @SSI -72 dBm / SNR 9.1 dB", type: "Davis Vantage Vue" },
-  "Irrigation Controller 01":  { connectivity: "Class A",   power: "Main Power",      radio: "Good @SSI -80 dBm / SNR 7.2 dB", type: "Hunter Node-200" },
-  "Camera 01":                 { connectivity: "Class C",   power: "Backup Enabled",  radio: "Weak @SSI -95 dBm / SNR 3.1 dB", type: "Reolink RLC-810A" },
+  "Sensor Tanah 01":            { connectivity: "Kelas A",   power: "Cadangan Baterai",  radio: "Baik @SSI -85 dBm / SNR 6.5 dB", tipe: "Libelium Plug & Sensor" },
+  "Sensor Cuaca 01":            { connectivity: "Kelas B",   power: "Tenaga Surya",      radio: "Sangat Baik @SSI -72 dBm / SNR 9.1 dB", tipe: "Davis Vantage Vue" },
+  "Kontroler Irigasi 01":       { connectivity: "Kelas A",   power: "Daya Utama",      radio: "Baik @SSI -80 dBm / SNR 7.2 dB", tipe: "Hunter Node-200" },
+  "Kamera 01":                 { connectivity: "Kelas C",   power: "Cadangan Aktif",  radio: "Lemah @SSI -95 dBm / SNR 3.1 dB", tipe: "Reolink RLC-810A" },
 };
 
 export default function DevicesPage() {
@@ -31,7 +31,7 @@ export default function DevicesPage() {
   const [hoveredDevice, setHoveredDevice] = useState(null);
   const [hoveredSpec, setHoveredSpec] = useState(null);
   const dev = DEVICES[selected];
-  const detail = DEVICE_DETAIL[dev.name] || DEVICE_DETAIL["Soil Sensor 01"];
+  const detail = DEVICE_DETAIL[dev.name] || DEVICE_DETAIL["Sensor Tanah 01"];
 
   return (
     <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
@@ -56,9 +56,9 @@ export default function DevicesPage() {
           
           <Cpu style={{ position: "absolute", right: -8, top: -8, opacity: 0.1 }} size={90} color="white" />
           <p style={{ color: "white", fontWeight: 800, fontSize: 16, marginBottom: 4, display: "flex", alignItems: "center", gap: 8 }}>
-            <Zap size={18} fill="white" /> Smart Farming
+            <Zap size={18} fill="white" /> Pertanian Pintar
           </p>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 12, marginBottom: 24, fontWeight: 500 }}>Intelligent agriculture management</p>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 12, marginBottom: 24, fontWeight: 500 }}>Manajemen pertanian cerdas</p>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ 
               width: 52, height: 52, borderRadius: 16, background: "rgba(255,255,255,0.18)",
@@ -70,8 +70,8 @@ export default function DevicesPage() {
               </span>
             </div>
             <div>
-              <p style={{ color: "white", fontWeight: 800, fontSize: 14 }}>Devices Connected</p>
-              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 11, fontWeight: 500 }}>All systems operational in real time</p>
+              <p style={{ color: "white", fontWeight: 800, fontSize: 14 }}>Perangkat Terhubung</p>
+              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 11, fontWeight: 500 }}>Semua sistem beroperasi secara real-time</p>
             </div>
           </div>
         </div>
@@ -79,9 +79,9 @@ export default function DevicesPage() {
         {/* Key Indicators */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {[
-            { val: "1",   label: "Alert", icon: AlertTriangle, color: "#ef4444", bg: "#fef2f2" },
-            { val: "80%", label: "Signal", icon: Signal, color: "var(--green-600)", bg: "var(--green-50)" },
-            { val: "14d", label: "Uptime", icon: Timer, color: "var(--gray-700)", bg: "var(--gray-50)" },
+            { val: "1",   label: "Peringatan", icon: AlertTriangle, color: "#ef4444", bg: "#fef2f2" },
+            { val: "80%", label: "Sinyal", icon: Signal, color: "var(--green-600)", bg: "var(--green-50)" },
+            { val: "14h", label: "Aktif", icon: Timer, color: "var(--gray-700)", bg: "var(--gray-50)" },
           ].map((s, i) => (
             <Card 
               key={s.label} 
@@ -111,8 +111,8 @@ export default function DevicesPage() {
         {/* Device List */}
         <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 100ms both", opacity: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
-            <p style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-900)" }}>Device List</p>
-            <Button variant="primary" size="sm" style={{ padding: "6px 14px", borderRadius: 10 }}><Plus size={14} /> Add</Button>
+            <p style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-900)" }}>Daftar Perangkat</p>
+            <Button variant="primary" size="sm" style={{ padding: "6px 14px", borderRadius: 10 }}><Plus size={14} /> Tambah</Button>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -141,16 +141,16 @@ export default function DevicesPage() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                   <p style={{ fontSize: 13, fontWeight: 800, color: "var(--gray-900)" }}>{d.name}</p>
                   <Badge
-                    label={d.signal === "Weak" ? "Alert" : "Online"}
-                    variant={d.signal === "Weak" ? "red" : "green"}
+                    label={d.signal === "Lemah" ? "Peringatan" : "Daring"}
+                    variant={d.signal === "Lemah" ? "red" : "green"}
                   />
                 </div>
                 <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
                    <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "var(--gray-400)", fontWeight: 600 }}>
-                     <Battery size={12} /> {d.battery.includes("Solar") ? "Solar" : "Active"}
+                     <Battery size={12} /> {d.battery.includes("Tenaga Surya") ? "Surya" : "Aktif"}
                    </div>
                    <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "var(--gray-400)", fontWeight: 600 }}>
-                     <Wifi size={12} color={d.signal === "Weak" ? "#ef4444" : "var(--green-600)"} /> {d.signal}
+                     <Wifi size={12} color={d.signal === "Lemah" ? "#ef4444" : "var(--green-600)"} /> {d.signal}
                    </div>
                 </div>
                 {(selected === i || hoveredDevice === i) && (
@@ -191,12 +191,12 @@ export default function DevicesPage() {
               }}>
                 <Cpu size={30} />
               </div>
-              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 6 }}>Device Node</p>
+              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 6 }}>Node Perangkat</p>
               <h2 style={{ color: "white", fontSize: 24, fontWeight: 800, letterSpacing: "-0.02em" }}>{dev.name}</h2>
               <div style={{ marginTop: 14, display: "flex", justifyContent: "center", gap: 8 }}>
                 <span style={{ background: "rgba(34,197,94,0.2)", border: "1px solid var(--green-400)", color: "white", padding: "4px 14px", borderRadius: 99, fontSize: 11, fontWeight: 700, display: "flex", alignItems: "center", gap: 4 }}>
                   <div className="ring-pulse" style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80" }} />
-                  VERIFIED
+                  TERVERIFIKASI
                 </span>
                 <span style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)", padding: "4px 14px", borderRadius: 99, fontSize: 11, fontWeight: 700 }}>LOCAL-NODE-04</span>
               </div>
@@ -206,20 +206,20 @@ export default function DevicesPage() {
           <div style={{ padding: 28 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
                <h3 style={{ fontSize: 16, fontWeight: 800, color: "var(--gray-900)", display: "flex", alignItems: "center", gap: 10, letterSpacing: "-0.01em" }}>
-                 <Settings size={18} color="var(--gray-400)" /> Device Specifications
+                 <Settings size={18} color="var(--gray-400)" /> Spesifikasi Perangkat
                </h3>
                <div style={{ display: "flex", gap: 8 }}>
-                 <Button variant="outline" size="sm" style={{ borderRadius: 10 }}>Firmware Log</Button>
-                 <Button variant="dark" size="sm" style={{ borderRadius: 10 }}>Configure</Button>
+                 <Button variant="outline" size="sm" style={{ borderRadius: 10 }}>Log Firmware</Button>
+                 <Button variant="dark" size="sm" style={{ borderRadius: 10 }}>Konfigurasi</Button>
                </div>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
               {[
-                { label: "Connectivity", value: detail.connectivity, icon: Wifi },
-                { label: "Power Source",  value: detail.power, icon: Zap },
-                { label: "Device Type",   value: detail.type, icon: Database },
-                { label: "Radio Quality", value: detail.radio, icon: Signal },
+                { label: "Konektivitas", value: detail.connectivity, icon: Wifi },
+                { label: "Sumber Daya",  value: detail.power, icon: Zap },
+                { label: "Tipe Perangkat",   value: detail.tipe, icon: Database },
+                { label: "Kualitas Radio", value: detail.radio, icon: Signal },
               ].map(({ label, value, icon: Icon }, i) => (
                 <div 
                   key={label} 
@@ -252,12 +252,12 @@ export default function DevicesPage() {
 
             {/* Performance Analytics */}
             <div style={{ marginTop: 28 }}>
-               <p style={{ fontSize: 11, fontWeight: 800, color: "var(--gray-400)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Live Performance Analytics</p>
+               <p style={{ fontSize: 11, fontWeight: 800, color: "var(--gray-400)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Analitik Performa Langsung</p>
                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
                   {[
-                    { label: "Signal Strength", value: dev.signal === "Weak" ? "3.1 dB" : "6.5 dB", status: dev.signal === "Weak" ? "danger" : "ok", icon: Signal, pct: dev.signal === "Weak" ? 30 : 85 },
-                    { label: "Internal Temp", value: "32.4°C", status: "ok", icon: Activity, pct: 65 },
-                    { label: "Encrypted Link", value: "AES-256", status: "ok", icon: ShieldCheck, pct: 100 },
+                    { label: "Kekuatan Sinyal", value: dev.signal === "Lemah" ? "3.1 dB" : "6.5 dB", status: dev.signal === "Lemah" ? "danger" : "ok", icon: Signal, pct: dev.signal === "Lemah" ? 30 : 85 },
+                    { label: "Suhu Internal", value: "32.4°C", status: "ok", icon: Activity, pct: 65 },
+                    { label: "Tautan Terenkripsi", value: "AES-256", status: "ok", icon: ShieldCheck, pct: 100 },
                   ].map(({ label, value, status, icon: Icon, pct }, i) => (
                     <div key={label} style={{
                       borderRadius: 18,

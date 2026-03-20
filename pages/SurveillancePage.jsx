@@ -57,8 +57,8 @@ export default function SurveillancePage() {
               <Video size={16} />
             </div>
             <div>
-              <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Camera Coverage</p>
-              <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>{CAMERAS.length} cameras active</p>
+              <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Cakupan Kamera</p>
+              <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>{CAMERAS.length} kamera aktif</p>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ export default function SurveillancePage() {
                   {selected === i && (
                     <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                       <div className="breathe" style={{ width: 6, height: 6, borderRadius: "50%", background: "#ef4444" }} />
-                      <span style={{ fontSize: 10, fontWeight: 800, color: "#ef4444", textTransform: "uppercase", letterSpacing: "0.05em" }}>Live</span>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: "#ef4444", textTransform: "uppercase", letterSpacing: "0.05em" }}>Langsung</span>
                     </div>
                   )}
                 </div>
@@ -118,12 +118,12 @@ export default function SurveillancePage() {
 
         {/* Quick Stats */}
         <Card style={{ padding: 20, borderRadius: 18, animation: "staggerUp 0.5s ease 200ms both", opacity: 0 }}>
-          <p style={{ fontSize: 13, fontWeight: 800, color: "var(--gray-900)", marginBottom: 14 }}>System Status</p>
+          <p style={{ fontSize: 13, fontWeight: 800, color: "var(--gray-900)", marginBottom: 14 }}>Status Sistem</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {[
-              { icon: Shield, label: "Security Level", value: "High", color: "var(--green-600)" },
-              { icon: Wifi, label: "Network Status", value: "Stable", color: "var(--green-500)" },
-              { icon: Activity, label: "System Load", value: "42%", color: "#f59e0b" },
+              { icon: Shield, label: "Tingkat Keamanan", value: "Tinggi", color: "var(--green-600)" },
+              { icon: Wifi, label: "Status Jaringan", value: "Stabil", color: "var(--green-500)" },
+              { icon: Activity, label: "Beban Sistem", value: "42%", color: "#f59e0b" },
             ].map((item, i) => (
               <div key={item.label} style={{
                 display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -190,7 +190,7 @@ export default function SurveillancePage() {
               zIndex: 10
             }}>
               <div className="breathe" style={{ width: 8, height: 8, borderRadius: "50%", background: "#ef4444" }} />
-              <span style={{ color: "white", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>LIVE — {cam.code}</span>
+              <span style={{ color: "white", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>LANGSUNG — {cam.code}</span>
             </div>
 
             <span style={{
@@ -201,7 +201,7 @@ export default function SurveillancePage() {
               backdropFilter: "blur(6px)",
               padding: "4px 12px",
               borderRadius: 8,
-            }}><Clock size={12} /> Last Motion: 2 mins ago</span>
+            }}><Clock size={12} /> Gerakan Terakhir: 2 menit yang lalu</span>
 
             {/* Center Camera Icon */}
             <div style={{ textAlign: "center", zIndex: 2 }}>
@@ -218,7 +218,7 @@ export default function SurveillancePage() {
                 <Camera size={32} color="white" />
               </div>
               <h2 style={{ color: "white", fontSize: 20, fontWeight: 800, letterSpacing: "-0.01em" }}>{cam.name}</h2>
-              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, fontWeight: 600, marginTop: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>Secure Link Established</p>
+              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, fontWeight: 600, marginTop: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>Tautan Aman Terjalin</p>
             </div>
 
             {/* Telemetry Overlay Card */}
@@ -243,8 +243,8 @@ export default function SurveillancePage() {
               
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 14 }}>
                 {[
-                  { label: "Stability", val: "98.4%", icon: Activity },
-                  { label: "Plant Status", val: "Optimal", icon: MapPin },
+                  { label: "Stabilitas", val: "98.4%", icon: Activity },
+                  { label: "Status Tanaman", val: "Optimal", icon: MapPin },
                 ].map((item) => (
                   <div key={item.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontSize: 11, color: "var(--gray-400)", display: "flex", alignItems: "center", gap: 5, fontWeight: 500 }}>
@@ -271,9 +271,9 @@ export default function SurveillancePage() {
           }}>
             <div style={{ display: "flex", gap: 6 }}>
               {[
-                { icon: Square, label: "Single" },
-                { icon: Grid, label: "Grid" },
-                { icon: Maximize2, label: "Full" }
+                { icon: Square, label: "Tunggal" },
+                { icon: Grid, label: "Kisi" },
+                { icon: Maximize2, label: "Penuh" }
               ].map((ctrl, idx) => (
                 <button 
                   key={idx} 
@@ -295,9 +295,9 @@ export default function SurveillancePage() {
 
             <div style={{ display: "flex", gap: 6, background: "var(--gray-50)", padding: "4px 12px", borderRadius: 14, border: "1px solid var(--gray-100)" }}>
               {[
-                { icon: SkipBack, label: "Back" },
-                { icon: isPlaying ? Pause : Play, label: isPlaying ? "Pause" : "Play", active: true },
-                { icon: SkipForward, label: "Forward" }
+                { icon: SkipBack, label: "Kembali" },
+                { icon: isPlaying ? Pause : Play, label: isPlaying ? "Jeda" : "Putar", active: true },
+                { icon: SkipForward, label: "Maju" }
               ].map((ctrl, idx) => (
                 <button 
                   key={idx}
@@ -395,9 +395,9 @@ export default function SurveillancePage() {
         {/* Dynamic Status Cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
           {[
-            { label: "Coverage Area",    value: cam.size, icon: Monitor    },
-            { label: "Last Activity",    value: "2 min ago", icon: History },
-            { label: "Recording Status", value: "Active / HD", icon: Activity },
+            { label: "Area Cakupan",    value: cam.size, icon: Monitor    },
+            { label: "Aktivitas Terakhir",    value: "2 menit lalu", icon: History },
+            { label: "Status Rekaman", value: "Aktif / HD", icon: Activity },
           ].map(({ label, value, icon: Icon }, i) => (
             <Card 
               key={label} 

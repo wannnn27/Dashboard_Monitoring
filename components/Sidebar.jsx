@@ -141,7 +141,7 @@ export default function Sidebar({ active, setActive }) {
               animation: "slideInRight 0.15s ease-out",
               pointerEvents: "none",
             }}>
-              Settings
+              Pengaturan
               <div style={{
                 position: "absolute",
                 left: -4,

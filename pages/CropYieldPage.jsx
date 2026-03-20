@@ -12,7 +12,7 @@ export default function CropYieldPage() {
   const chartData = MONTH_DATA.map(d => ({
     label: d.m,
     value: d.v,
-    tooltip: `${d.v} tons`,
+    tooltip: `${d.v} ton`,
   }));
 
   return (
@@ -25,12 +25,12 @@ export default function CropYieldPage() {
         <Card style={{ padding: 28, borderRadius: 24, animation: "staggerUp 0.5s ease both", opacity: 0 }}>
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 28 }}>
             <div>
-              <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 600, marginBottom: 6 }}>Total Crop Yield · All active fields</p>
+              <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 600, marginBottom: 6 }}>Total Hasil Panen · Semua lahan aktif</p>
               <div style={{ display: "flex", alignItems: "flex-end", gap: 10 }}>
                 <span style={{ fontSize: 48, fontWeight: 800, color: "var(--gray-900)", lineHeight: 1, letterSpacing: "-0.04em" }}>
                   <AnimatedNumber value={256.3} duration={1000} />
                 </span>
-                <span style={{ fontSize: 16, color: "var(--gray-400)", marginBottom: 6, fontWeight: 600 }}>Tons</span>
+                <span style={{ fontSize: 16, color: "var(--gray-400)", marginBottom: 6, fontWeight: 600 }}>Ton</span>
                 <div style={{
                   display: "flex", alignItems: "center", gap: 4,
                   background: "var(--green-50)",
@@ -45,7 +45,7 @@ export default function CropYieldPage() {
               </div>
             </div>
             <Button variant="dark" size="sm" style={{ borderRadius: 12 }}>
-              <BarChart3 size={14} /> Export
+              <BarChart3 size={14} /> Ekspor
             </Button>
           </div>
 
@@ -60,7 +60,7 @@ export default function CropYieldPage() {
 
         {/* Container Table */}
         <Card style={{ padding: 28, borderRadius: 24, animation: "staggerUp 0.5s ease 100ms both", opacity: 0 }}>
-          <SectionTitle title="Production Overview" subtitle="Container yield and environmental metrics" />
+          <SectionTitle title="Ikhtisar Produksi" subtitle="Hasil kontainer dan metrik lingkungan" />
           <div style={{ display: "flex", flexDirection: "column" }}>
             {/* Header */}
             <div style={{
@@ -70,7 +70,7 @@ export default function CropYieldPage() {
               borderBottom: "1px solid var(--gray-100)",
               marginBottom: 4,
             }}>
-              {["ID", "Plant Name", "Progress", "Temp", "Humidity"].map(h => (
+              {["ID", "Nama Tanaman", "Kemajuan", "Suhu", "Kelembapan"].map(h => (
                 <span key={h} style={{ fontSize: 10, fontWeight: 700, color: "var(--gray-400)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{h}</span>
               ))}
             </div>
@@ -130,18 +130,18 @@ export default function CropYieldPage() {
         {/* Production Overview */}
         <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 50ms both", opacity: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-            <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Production Overview</p>
+            <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Ikhtisar Produksi</p>
             <ArrowUpRight size={16} color="var(--green-500)" />
           </div>
-          <p style={{ fontSize: 11, color: "var(--gray-400)", marginBottom: 10, fontWeight: 500 }}>Estimated Revenue</p>
+          <p style={{ fontSize: 11, color: "var(--gray-400)", marginBottom: 10, fontWeight: 500 }}>Estimasi Pendapatan</p>
           <p style={{ fontSize: 28, fontWeight: 800, color: "var(--gray-900)", marginBottom: 20, letterSpacing: "-0.03em" }}>
             $<AnimatedNumber value={84300} duration={1200} prefix="" />
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {[
-              { label: "Crop Growth Progress", pct: 70, color: "var(--green-400)" },
-              { label: "Total Harvest Volume", pct: 45, color: "#fcd34d" },
+              { label: "Kemajuan Pertumbuhan", pct: 70, color: "var(--green-400)" },
+              { label: "Total Volume Panen", pct: 45, color: "#fcd34d" },
             ].map(({ label, pct, color }) => (
               <div key={label}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
@@ -153,13 +153,13 @@ export default function CropYieldPage() {
             ))}
           </div>
           <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 16, lineHeight: 1.6, fontWeight: 500 }}>
-            Harvest efficiency improved by 4.2% compared to last month due to better seasonal farming practices.
+            Efisiensi panen meningkat 4,2% dibandingkan bulan lalu karena praktik pertanian musiman yang lebih baik.
           </p>
         </Card>
 
         {/* Recent Updates */}
         <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 150ms both", opacity: 0 }}>
-          <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)", marginBottom: 18 }}>Recent Updates</p>
+          <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)", marginBottom: 18 }}>Pembaruan Terkini</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {RECENT_UPDATES.map((u, i) => (
               <div 
@@ -186,9 +186,9 @@ export default function CropYieldPage() {
         {/* Field Insight — interactive mini chart */}
         <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 250ms both", opacity: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-            <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Field Insight</p>
+            <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Wawasan Lahan</p>
           </div>
-          <p style={{ fontSize: 11, color: "var(--gray-400)", marginBottom: 12, fontWeight: 500 }}>Water Usage Efficiency</p>
+          <p style={{ fontSize: 11, color: "var(--gray-400)", marginBottom: 12, fontWeight: 500 }}>Efisiensi Penggunaan Air</p>
           <div style={{ display: "flex", alignItems: "flex-end", gap: 14 }}>
             <span style={{ fontSize: 38, fontWeight: 800, color: "var(--gray-900)", lineHeight: 1 }}>
               <AnimatedNumber value={78} duration={800} />

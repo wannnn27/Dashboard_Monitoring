@@ -5,27 +5,27 @@ import { Sparkles, CloudSun, Droplets, Leaf, Wind, Thermometer, Zap, RefreshCw }
 
 const SOIL_BARS = [
   { label: "N",  value: 60, color: "var(--green-400)", fullLabel: "Nitrogen" },
-  { label: "P",  value: 40, color: "#fbbf24", fullLabel: "Phosphorus" },
-  { label: "K",  value: 75, color: "var(--green-500)", fullLabel: "Potassium" },
-  { label: "pH", value: 55, color: "#60a5fa", fullLabel: "pH Level" },
-  { label: "Ca", value: 90, color: "var(--green-300)", fullLabel: "Calcium" },
+  { label: "P",  value: 40, color: "#fbbf24", fullLabel: "Fosfor" },
+  { label: "K",  value: 75, color: "var(--green-500)", fullLabel: "Kalium" },
+  { label: "pH", value: 55, color: "#60a5fa", fullLabel: "Tingkat pH" },
+  { label: "Ca", value: 90, color: "var(--green-300)", fullLabel: "Kalsium" },
   { label: "Mg", value: 45, color: "#f87171", fullLabel: "Magnesium" },
 ];
 
 const WEATHER_DATA = [
-  { label: "Sun", value: 28, tooltip: "28°C" },
-  { label: "Mon", value: 26, tooltip: "26°C" },
-  { label: "Tue", value: 30, tooltip: "30°C" },
-  { label: "Wed", value: 25, tooltip: "25°C" },
-  { label: "Thu", value: 27, tooltip: "27°C" },
-  { label: "Fri", value: 29, tooltip: "29°C" },
-  { label: "Sat", value: 28, tooltip: "28°C" },
+  { label: "Min", value: 28, tooltip: "28°C" },
+  { label: "Sen", value: 26, tooltip: "26°C" },
+  { label: "Sel", value: 30, tooltip: "30°C" },
+  { label: "Rab", value: 25, tooltip: "25°C" },
+  { label: "Kam", value: 27, tooltip: "27°C" },
+  { label: "Jum", value: 29, tooltip: "29°C" },
+  { label: "Sab", value: 28, tooltip: "28°C" },
 ];
 
 export default function ActivityPage() {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResult, setAiResult] = useState(
-    "Overall performance indicates efficient investment management and strong harvest productivity this season. Soil pH levels are within optimal range. Irrigation cycles adjusted for maximum water efficiency."
+    "Performa keseluruhan menunjukkan manajemen investasi yang efisien dan produktivitas panen yang kuat musim ini. Tingkat pH tanah berada dalam kisaran optimal. Siklus irigasi disesuaikan untuk efisiensi air maksimum."
   );
   const [hoveredSoil, setHoveredSoil] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -38,7 +38,7 @@ export default function ActivityPage() {
   const handleRegenerate = () => {
     setAiLoading(true);
     setTimeout(() => {
-      setAiResult("AI analysis complete: Nitrogen levels remain stable. Recommend increasing irrigation frequency by 15% in Zone B. Predicted yield increase of 8% this quarter based on current growth trajectory.");
+      setAiResult("Analisis AI selesai: Tingkat nitrogen tetap stabil. Direkomendasikan untuk meningkatkan frekuensi irigasi sebesar 15% di Zona B. Prediksi peningkatan hasil sebesar 8% kuartal ini berdasarkan lintasan pertumbuhan saat ini.");
       setAiLoading(false);
     }, 1500);
   };
@@ -53,16 +53,16 @@ export default function ActivityPage() {
         <Card style={{ overflow: "hidden", borderRadius: 24, animation: "staggerUp 0.5s ease both", opacity: 0 }}>
           <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid var(--gray-50)", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
-              <p style={{ fontSize: 16, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.02em" }}>Farm Overview</p>
-              <p style={{ fontSize: 12, color: "var(--gray-400)", marginTop: 3, fontWeight: 500 }}>AI-powered analytics and growth monitoring</p>
+              <p style={{ fontSize: 16, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.02em" }}>Ikhtisar Lahan</p>
+              <p style={{ fontSize: 12, color: "var(--gray-400)", marginTop: 3, fontWeight: 500 }}>Analitik bertenaga AI dan pemantauan pertumbuhan</p>
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               <div style={{
                 background: "var(--gray-50)", border: "1.5px solid var(--gray-100)",
                 borderRadius: 12, padding: "6px 14px",
                 fontSize: 12, color: "var(--gray-600)", fontWeight: 600,
-              }}>Mon, 22 Jul</div>
-              <Button variant="dark" size="sm" style={{ borderRadius: 12 }}>Export</Button>
+              }}>Sen, 22 Jul</div>
+              <Button variant="dark" size="sm" style={{ borderRadius: 12 }}>Ekspor</Button>
             </div>
           </div>
 
@@ -87,10 +87,10 @@ export default function ActivityPage() {
 
             {/* Crop label tags */}
             {[
-              { label: "Plant Health", left: "12%", top: "20%", color: "var(--green-600)", bg: "var(--green-100)", icon: Leaf },
-              { label: "Crop Growth",  left: "55%", top: "12%", color: "var(--green-700)", bg: "var(--green-200)", icon: Zap },
-              { label: "Irrigation Plan", left: "22%", top: "72%", color: "#1d4ed8", bg: "#dbeafe", icon: Droplets },
-              { label: "Moisture OK", left: "68%", top: "68%", color: "#059669", bg: "#d1fae5", icon: Wind },
+              { label: "Kesehatan Tanaman", left: "12%", top: "20%", color: "var(--green-600)", bg: "var(--green-100)", icon: Leaf },
+              { label: "Pertumbuhan Tanaman",  left: "55%", top: "12%", color: "var(--green-700)", bg: "var(--green-200)", icon: Zap },
+              { label: "Rencana Irigasi", left: "22%", top: "72%", color: "#1d4ed8", bg: "#dbeafe", icon: Droplets },
+              { label: "Kelembapan OK", left: "68%", top: "68%", color: "#059669", bg: "#d1fae5", icon: Wind },
             ].map(({ label, left, top, color, bg, icon: Icon }, i) => (
               <div 
                 key={label} 
@@ -117,8 +117,8 @@ export default function ActivityPage() {
               </div>
             ))}
             <div style={{ textAlign: "center", zIndex: 1 }}>
-              <p style={{ fontSize: 13, color: "var(--green-700)", fontWeight: 700, marginBottom: 4 }}>Hydroponic Growth Cycle</p>
-              <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 500 }}>Week 6 of 12 · All systems nominal</p>
+              <p style={{ fontSize: 13, color: "var(--green-700)", fontWeight: 700, marginBottom: 4 }}>Siklus Pertumbuhan Hidroponik</p>
+              <p style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 500 }}>Minggu ke-6 dari 12 · Semua sistem normal</p>
             </div>
           </div>
         </Card>
@@ -130,8 +130,8 @@ export default function ActivityPage() {
           <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 100ms both", opacity: 0 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
               <div>
-                <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Weather Forecast</p>
-                <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>Real-time farm weather insights</p>
+                <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Prakiraan Cuaca</p>
+                <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>Wawasan cuaca lahan waktu nyata</p>
               </div>
               <div style={{
                 width: 36, height: 36, borderRadius: 12,
@@ -146,8 +146,8 @@ export default function ActivityPage() {
                 <AnimatedNumber value={28} duration={600} />
               </span>
               <div style={{ marginBottom: 4 }}>
-                <p style={{ fontSize: 13, color: "var(--gray-600)", fontWeight: 700 }}>°C · Cloudy</p>
-                <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>Feels like 30°C</p>
+                <p style={{ fontSize: 13, color: "var(--gray-600)", fontWeight: 700 }}>°C · Berawan</p>
+                <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>Terasa seperti 30°C</p>
               </div>
             </div>
             <AnimatedBarChart
@@ -162,8 +162,8 @@ export default function ActivityPage() {
           <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 200ms both", opacity: 0 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
               <div>
-                <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Soil Condition</p>
-                <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>Soil nutrients and moisture overview</p>
+                <p style={{ fontSize: 14, fontWeight: 800, color: "var(--gray-900)" }}>Kondisi Tanah</p>
+                <p style={{ fontSize: 11, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>Ikhtisar nutrisi dan kelembapan tanah</p>
               </div>
               <div style={{
                 width: 36, height: 36, borderRadius: 12,
@@ -251,8 +251,8 @@ export default function ActivityPage() {
               <Sparkles size={16} />
             </div>
             <div>
-              <p style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-900)" }}>Area Prediction</p>
-              <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>AI model analysis</p>
+              <p style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-900)" }}>Prediksi Area</p>
+              <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>Analisis model AI</p>
             </div>
           </div>
 
@@ -261,15 +261,15 @@ export default function ActivityPage() {
             <PredictionChart />
           </div>
           <p style={{ fontSize: 12, color: "var(--gray-600)", marginBottom: 18, lineHeight: 1.6, fontWeight: 500 }}>
-            <span style={{ fontWeight: 800, color: "var(--green-600)" }}>56%</span> production increase projected based on AI model
+            <span style={{ fontWeight: 800, color: "var(--green-600)" }}>56%</span> peningkatan produksi diproyeksikan berdasarkan model AI
           </p>
 
           <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
             <Button variant="primary" size="sm" onClick={handleRegenerate} style={{ flex: 1, borderRadius: 12 }}>
-              <Sparkles size={14} /> AI Insight
+              <Sparkles size={14} /> Wawasan AI
             </Button>
             <Button variant="outline" size="sm" onClick={handleRegenerate} style={{ flex: 1, borderRadius: 12 }}>
-              <RefreshCw size={14} /> Regenerate
+              <RefreshCw size={14} /> Regenerasi
             </Button>
           </div>
 
@@ -282,7 +282,7 @@ export default function ActivityPage() {
             marginBottom: 14,
           }}>
             <p style={{ fontSize: 11, color: "var(--gray-600)", lineHeight: 1.6, fontStyle: "italic", fontWeight: 500 }}>
-              "Act as an agriculture analytics system generating a Smart Yield Insights summary per crop."
+              "Bertindak sebagai sistem analitik pertanian yang menghasilkan ringkasan Wawasan Hasil Pintar per tanaman."
             </p>
           </div>
 
@@ -300,11 +300,11 @@ export default function ActivityPage() {
                 display: "flex", alignItems: "center", justifyContent: "center",
                 color: "white", fontSize: 10, fontWeight: 700, flexShrink: 0,
               }}>✓</div>
-              <p style={{ fontSize: 13, fontWeight: 800, color: "var(--gray-900)" }}>Smart Yield Insights</p>
+              <p style={{ fontSize: 13, fontWeight: 800, color: "var(--gray-900)" }}>Wawasan Hasil Pintar</p>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 14 }}>
-              {[["Seasonal Cost", "$400,275.5k"], ["Total Yield", "52,600 kg"]].map(([l, v]) => (
+              {[["Biaya Musiman", "Rp400.275,5rb"], ["Total Hasil", "52.600 kg"]].map(([l, v]) => (
                 <div key={l} style={{ 
                   background: "white", padding: "10px 12px", borderRadius: 10,
                   border: "1px solid var(--green-100)",
