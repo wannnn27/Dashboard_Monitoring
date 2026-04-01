@@ -382,21 +382,29 @@ export function AnimatedBarChart({ data, height = 160, barColor = "var(--green-4
 export function AnimatedNumber({ value, duration = 1000, prefix = "", suffix = "" }) {
   const [current, setCurrent] = useState(0);
   const numValue = parseFloat(value) || 0;
+  const isInt = Number.isInteger(numValue);
 
   useEffect(() => {
-    let start = 0;
-    const increment = numValue / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= numValue) {
-        setCurrent(numValue);
-        clearInterval(timer);
-      } else {
-        setCurrent(Math.floor(start * 10) / 10);
+    let startTimestamp = null;
+    let frameId;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      const nextValue = progress * numValue;
+      setCurrent(nextValue);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
       }
-    }, 16);
-    return () => clearInterval(timer);
+    };
+
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
   }, [numValue, duration]);
 
-  return <span>{prefix}{Number.isInteger(numValue) ? Math.round(current) : current.toFixed(1)}{suffix}</span>;
+  const display = isInt ? Math.round(current) : current.toFixed(1);
+
+  return <span>{prefix}{display}{suffix}</span>;
 }

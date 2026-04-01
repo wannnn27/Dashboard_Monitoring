@@ -34,10 +34,10 @@ export default function DevicesPage() {
   const detail = DEVICE_DETAIL[dev.name] || DEVICE_DETAIL["Sensor Tanah 01"];
 
   return (
-    <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+    <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
       
       {/* ── LEFT COLUMN ── */}
-      <div style={{ width: 340, flexShrink: 0, display: "flex", flexDirection: "column", gap: 20 }}>
+      <div style={{ flex: "0 0 340px", minWidth: 300, display: "flex", flexDirection: "column", gap: 20 }}>
 
         {/* Overview Banner */}
         <div style={{

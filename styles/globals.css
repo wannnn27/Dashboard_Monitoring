@@ -248,3 +248,126 @@ a      { text-decoration: none; color: inherit; }
   background: var(--green-200);
   color: var(--green-900);
 }
+
+/* ══════════════════════════════════════════════════════
+   MOBILE RESPONSIVENESS (SMART OVERRIDES) 
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  /* Setup App root layout changes */
+  .app-viewport { flex-direction: column !important; }
+  .app-main { margin-left: 0 !important; padding-left: 16px !important; padding-right: 16px !important; width: 100% !important; }
+  
+  /* Sidebar mapped to bottom nav */
+  aside {
+    position: fixed !important;
+    bottom: 0 !important; top: auto !important; left: 0 !important; right: 0 !important;
+    width: 100% !important; height: 75px !important;
+    flex-direction: row !important; align-items: center !important; justify-content: space-around !important;
+    border-radius: 24px 24px 0 0 !important; padding: 0 10px !important; z-index: 100 !important;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.06) !important;
+    border-top: 1px solid var(--gray-100) !important; border-bottom: none !important;
+  }
+  aside nav { flex-direction: row !important; width: 100%; justify-content: space-around !important; }
+  aside > div:last-child { display: none !important; } /* hide settings block to fit nav icons */
+  
+  /* TopBar compact layout */
+  header { left: 0 !important; padding: 0 20px !important; width: 100% !important; }
+  header > div:last-child > div:nth-child(2) { display: none !important; } /* hide clock */
+  header > div:last-child > button:nth-child(3) { display: none !important; } /* hide external link button */
+  
+  /* Search input adjustments */
+  header div[style*="width: 280px"], 
+  header div[style*="width: 200px"] { 
+    width: 140px !important; 
+  }
+  header > div:nth-child(1) h1 { font-size: 16px !important; }
+  header > div:nth-child(1) p { display: none !important; }
+
+  /* Collapse all standard multi-column layouts */
+  .page-transition > div[style*="grid"],
+  .page-transition > div[style*="flex"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* Handle specific page patterns */
+  /* Split main/sidebar pattern (1fr 320px) */
+  div[style*="1fr 320px"],
+  div[style*="1fr 340px"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* 3-column metric grids */
+  div[style*="repeat(3, 1fr)"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Fix for sidebar-like column in grids */
+  div[style*="320px"],
+  div[style*="340px"] {
+    width: 100% !important;
+  }
+
+  /* Fix the right side specific width bound in Overview/Other pages */
+  .page-transition > div > div:first-child > div:first-child[style*="display: flex"] {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Scale down large numbers and headings */
+  h2[style*="fontSize: 28px"] { font-size: 20px !important; }
+  h4[style*="fontSize: 32px"] { font-size: 24px !important; }
+  h4[style*="fontSize: 36px"] { font-size: 28px !important; }
+  
+  /* Collapse 2-column grids */
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="gridTemplateColumns: \"1fr 1fr\""] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Adjust chart containers */
+  div[style*="height: 140px"],
+  div[style*="height: 160px"] {
+    height: 120px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Final densification for mobile */
+  .app-main { padding-left: 12px !important; padding-right: 12px !important; }
+  main { margin-top: 80px !important; padding-bottom: 90px !important; }
+  
+  /* Cards padding adjustments */
+  div[style*="padding: 24px"],
+  div[style*="padding: 32px"] { 
+    padding: 16px !important; 
+  }
+  
+  /* CropYieldPage list view grid `80px 1fr 140px...` */
+  div[style*="80px 1fr"] {
+    display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
+    padding: 12px !important; height: auto !important; align-items: flex-start !important;
+  }
+  
+  /* List rows transformation */
+  div[style*="grid-template-columns: 1fr 140px 120px 100px 80px"],
+  div[style*="gridTemplateColumns: \"1fr 140px 120px 100px 80px\""] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  /* Hide the repetitive headers on mobile list views */
+  div[style*="grid-template-columns"][style*="background: var(--gray-50)"] {
+    display: none !important;
+  }
+
+  /* Badge and Pill adjustments */
+  span[style*="padding: 3px 10px"] { padding: 2px 8px !important; font-size: 9px !important; }
+}

@@ -110,15 +110,20 @@ export default function Sidebar({ active, setActive }) {
         <div style={{ width: 28, height: 1, background: "var(--gray-100)", margin: "0 auto 8px" }} />
         <div style={{ position: "relative" }}>
           <button 
+            onClick={() => setActive("settings")}
             onMouseEnter={() => setHoveredKey("settings")}
             onMouseLeave={() => setHoveredKey(null)}
             style={{
               width: 42, height: 42, borderRadius: 14,
               display: "flex", alignItems: "center", justifyContent: "center",
-              color: hoveredKey === "settings" ? "var(--green-600)" : "var(--gray-400)",
-              transition: "all 0.3s",
-              background: hoveredKey === "settings" ? "var(--gray-50)" : "transparent",
-              transform: hoveredKey === "settings" ? "rotate(45deg)" : "rotate(0deg)",
+              color: active === "settings" ? "white" : hoveredKey === "settings" ? "var(--green-600)" : "var(--gray-400)",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              background: active === "settings" 
+                ? "linear-gradient(135deg, var(--gray-800), var(--gray-900))" 
+                : hoveredKey === "settings" ? "var(--gray-50)" : "transparent",
+              transform: hoveredKey === "settings" ? "rotate(45deg) scale(1.08)" : active === "settings" ? "scale(1)" : "scale(1)",
+              boxShadow: active === "settings" ? "0 4px 12px rgba(0,0,0,0.15)" : "none",
+              border: "none",
             }}
           >
             <LucideIcons.Settings size={20} />
@@ -156,6 +161,9 @@ export default function Sidebar({ active, setActive }) {
           )}
         </div>
       </div>
+
+
+
     </aside>
   );
 }

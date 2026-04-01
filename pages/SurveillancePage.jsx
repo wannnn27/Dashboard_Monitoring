@@ -42,10 +42,10 @@ export default function SurveillancePage() {
   }, [isPlaying]);
 
   return (
-    <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+    <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
       
       {/* ── LEFT: Camera Selection ── */}
-      <div style={{ width: 320, flexShrink: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ flex: "0 0 320px", minWidth: 300, display: "flex", flexDirection: "column", gap: 16 }}>
         <Card style={{ padding: 22, borderRadius: 22, animation: "staggerUp 0.5s ease both", opacity: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
             <div style={{ 
@@ -144,8 +144,8 @@ export default function SurveillancePage() {
         </Card>
       </div>
 
-      {/* ── RIGHT: Live Stream ── */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
+      {/* ── LEFT COLUMN ── */}
+      <div style={{ flex: "2 1 600px", display: "flex", flexDirection: "column", gap: 20 }}>
         <Card style={{ overflow: "hidden", borderRadius: 22, animation: "staggerUp 0.5s ease 50ms both", opacity: 0 }}>
           {/* Main Feed Container */}
           <div style={{
@@ -393,7 +393,7 @@ export default function SurveillancePage() {
         </Card>
 
         {/* Dynamic Status Cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14 }}>
           {[
             { label: "Area Cakupan",    value: cam.size, icon: Monitor    },
             { label: "Aktivitas Terakhir",    value: "2 menit lalu", icon: History },

@@ -1,7 +1,7 @@
 // pages/ActivityPage.jsx
 import { useState, useEffect } from "react";
 import { Card, Button, ProgressBar, SectionTitle, AnimatedBarChart, AnimatedNumber } from "../components/ui";
-import { Sparkles, CloudSun, Droplets, Leaf, Wind, Thermometer, Zap, RefreshCw } from "lucide-react";
+import { Cpu, CloudSun, Droplets, Leaf, Wind, Thermometer, Zap, RefreshCw } from "lucide-react";
 
 const SOIL_BARS = [
   { label: "N",  value: 60, color: "var(--green-400)", fullLabel: "Nitrogen" },
@@ -44,7 +44,7 @@ export default function ActivityPage() {
   };
 
   return (
-    <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+    <div className="page-transition" style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
 
       {/* ── LEFT COLUMN ── */}
       <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
@@ -61,7 +61,14 @@ export default function ActivityPage() {
                 background: "var(--gray-50)", border: "1.5px solid var(--gray-100)",
                 borderRadius: 12, padding: "6px 14px",
                 fontSize: 12, color: "var(--gray-600)", fontWeight: 600,
-              }}>Sen, 22 Jul</div>
+              }}>
+                {(() => {
+                  const idDays = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
+                  const idMonths = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+                  const d = new Date();
+                  return `${idDays[d.getDay()]}, ${d.getDate()} ${idMonths[d.getMonth()]}`;
+                })()}
+              </div>
               <Button variant="dark" size="sm" style={{ borderRadius: 12 }}>Ekspor</Button>
             </div>
           </div>
@@ -124,7 +131,7 @@ export default function ActivityPage() {
         </Card>
 
         {/* Weather + Soil row */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 28 }}>
 
           {/* Weather */}
           <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 100ms both", opacity: 0 }}>
@@ -239,7 +246,7 @@ export default function ActivityPage() {
       </div>
 
       {/* ── AI PANEL ── */}
-      <div style={{ width: 300, flexShrink: 0 }}>
+      <div style={{ flex: "0 0 300px", display: "flex", flexDirection: "column", gap: 24 }}>
         <Card style={{ padding: 24, borderRadius: 22, animation: "staggerUp 0.5s ease 150ms both", opacity: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
             <div style={{
@@ -248,7 +255,7 @@ export default function ActivityPage() {
               display: "flex", alignItems: "center", justifyContent: "center",
               color: "white",
             }}>
-              <Sparkles size={16} />
+              <Cpu size={16} />
             </div>
             <div>
               <p style={{ fontSize: 15, fontWeight: 800, color: "var(--gray-900)" }}>Prediksi Area</p>
@@ -266,7 +273,7 @@ export default function ActivityPage() {
 
           <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
             <Button variant="primary" size="sm" onClick={handleRegenerate} style={{ flex: 1, borderRadius: 12 }}>
-              <Sparkles size={14} /> Wawasan AI
+              <Cpu size={14} /> Wawasan AI
             </Button>
             <Button variant="outline" size="sm" onClick={handleRegenerate} style={{ flex: 1, borderRadius: 12 }}>
               <RefreshCw size={14} /> Regenerasi

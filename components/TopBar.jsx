@@ -107,7 +107,7 @@ function NotificationPanel({ isOpen, onToggle }) {
   );
 }
 
-export default function TopBar() {
+export default function TopBar({ title }) {
   const [isNotifOpen, setNotifOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -148,7 +148,7 @@ export default function TopBar() {
            <Sprout size={22} strokeWidth={2.5} />
          </div>
          <div>
-           <h1 style={{ fontSize: 18, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.03em", lineHeight: 1.2 }}>Monitor Rumah Kaca</h1>
+           <h1 style={{ fontSize: 18, fontWeight: 800, color: "var(--gray-900)", letterSpacing: "-0.03em", lineHeight: 1.2 }}>{title || "Monitor Rumah Kaca"}</h1>
            <p style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500 }}>Dasbor Pertanian Cerdas</p>
          </div>
       </div>

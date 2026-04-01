@@ -8,6 +8,7 @@ import CropYieldPage    from "./pages/CropYieldPage";
 import DevicesPage      from "./pages/DevicesPage";
 import ActivityPage     from "./pages/ActivityPage";
 import SurveillancePage from "./pages/SurveillancePage";
+import SettingsPage     from "./pages/SettingsPage";
 import { PAGE_CONFIG } from "./lib/data";
 
 const PAGES = {
@@ -17,6 +18,7 @@ const PAGES = {
   devices:      <DevicesPage />,
   activity:     <ActivityPage />,
   surveillance: <SurveillancePage />,
+  settings:     <SettingsPage />,
 };
 
 export default function App() {
@@ -24,14 +26,14 @@ export default function App() {
   const { title } = PAGE_CONFIG[page];
 
   return (
-    <div style={{ 
+    <div className="app-viewport" style={{ 
       display: "flex", 
       minHeight: "100vh", 
       background: "linear-gradient(180deg, #f8faf9 0%, #f3f4f6 100%)" 
     }}>
       <Sidebar active={page} setActive={setPage} />
 
-      <div style={{ 
+      <div className="app-main" style={{ 
         marginLeft: 100, flex: 1, display: "flex", flexDirection: "column", 
         minHeight: "100vh", paddingRight: 28 
       }}>
